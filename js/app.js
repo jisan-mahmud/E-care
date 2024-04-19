@@ -1,3 +1,10 @@
+// menu toggle
+const menuToggle = document.getElementById('menu_toggle');
+const navbarCta = document.getElementById('navbar-cta');
+menuToggle.addEventListener('click', function() {
+  navbarCta.classList.toggle('hidden'); // Toggle visibility of the navigation menu
+});
+
 const services_load = () => {
     fetch("https://testing-8az5.onrender.com/services/")
       .then((res) => res.json())
