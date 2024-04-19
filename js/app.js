@@ -1,12 +1,11 @@
-// data load
 const services_load = () => {
-  fetch("https://testing-8az5.onrender.com/services/")
-    .then((res) => res.json())
-    .then((data) => {
-      display_service(data);
-    })
-    .catch((err) => console.log(err));
-};
+    fetch("https://testing-8az5.onrender.com/services/")
+      .then((res) => res.json())
+      .then((data) => {
+        display_service(data);
+      })
+      .catch((err) => console.log(err));
+  };
 
 // display services
 const display_service = (services) => {
