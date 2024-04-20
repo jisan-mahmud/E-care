@@ -9,45 +9,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <style>
-      .swiper-slide {
-        height: 500px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .slide-content {
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        height: 500px;
-        border-radius: 20px;
-      }
-
-      .slide-content h3 {
-        color: #fff;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
-
-      .slide-content p {
-        color: #fff;
-        font-size: 1rem;
-        margin-bottom: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="px-4">
     <!-- header section start here -->
 
-    <header>
+    <header class="mb-12">
       <nav class="bg-white border-gray-200">
         <div
           class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-8"
@@ -184,30 +152,80 @@
     </header>
     <!-- header section end here -->
     <main>
-      <div class="relative w-full glide-03 max-w-screen-xl m-auto my-4 p-10">
-        <div class="flex flex-col items-center sm:w-8/12 mx-auto text-center">
-          <h1 class="text-3xl my-2 sm:text-4xl font-medium">
-            Services We Provide
-          </h1>
-          <p class="flex text-center font-medium my-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-            tempore minima cum? Iste vel quidem cupiditate vero error.
-          </p>
-        </div>
-        <div class="max-w-screen-xl mt-8">
-          <!-- Slides start-->
-          <div
-            class="relative w-full glide-03 max-w-screen-xl m-auto my-4 p-10"
-          >
-            <div class="swiper mySwiper">
-              <div class="swiper-wrapper"></div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-          <!-- Slides end-->
-        </div>
-      </div>
 
+        <!-- Services section start -->
+        <div class="relative w-full glide-03 max-w-screen-xl m-auto my-4 px-10">
+            <div class="flex flex-col items-center sm:w-8/12 mx-auto text-center">
+                <h1 class="text-3xl my-2 sm:text-4xl font-medium">
+                    Services We Provide
+                </h1>
+                <p class="flex text-center font-medium my-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                    tempore minima cum? Iste vel quidem cupiditate vero error.
+                </p>
+            </div>
+            <div class="max-w-screen-xl">
+            <!-- Slides start-->
+            <div
+                class="relative w-full glide-03 max-w-screen-xl m-auto my-4 px-10"
+            >
+                <div class="swiper mySwiper">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <!-- Slides end-->
+            </div>
+        </div>
+        <!-- secvices sextion end -->
+
+        <!-- doctors section start -->
+        <div class="max-w-screen-xl m-auto my-4 mt-12">
+            <div class="flex flex-col items-center sm:w-8/12 mx-auto text-center">
+                <h1 class="text-3xl my-2 sm:text-4xl font-medium">
+                    Our Doctors
+                </h1>
+            </div>
+            <!-- containt section -->
+            <div class="flex my-2">
+              <!-- sidebar section -->
+                <div class="flex-col lg:w-2/12 md:w-3/12 w-4/12 hidden sm:block">
+                  <!-- specialization section -->
+                  <div class="w-full my-2">
+                      <div class="flex items-center justify-between bg-blue-700 px-4 py-2 text-lg font-bold text-white">
+                          <span for="sider_arrow">specialization</span>
+                          <span id="sider_arrow" data-target="sider_items1" class="material-symbols-outlined flex items-center cursor-pointer">expand_more
+                          </span>
+                      </div>
+                      <ul id="sider_items1" class="hidden">
+                          <li class="px-6 py-2"><a>Dermatologist</a></li>
+                          <li class="px-6 py-2"><a>Peadiatritians</a></li>
+                          <li class="px-6 py-2"><a>Orthopediatritian</a></li>
+                          <li class="px-6 py-2"><a>Neurologist</a></li>
+                          <li class="px-6 py-2"><a>Physiatrist</a></li>
+                      </ul>
+                  </div>
+                  <!-- Designation Section -->
+                  <div class="w-full my-2">
+                    <div class="flex items-center justify-between bg-blue-700 px-4 py-2 text-lg font-bold text-white">
+                        <span for="sider_arrow">Designation</span>
+                        <span id="sider_arrow" data-target="sider_items2" class="material-symbols-outlined flex items-center cursor-pointer">expand_more
+                        </span>
+                    </div>
+                    <ul id="sider_items2" class="hidden">
+                        <li class="px-6 py-2"><a>Dermatologist</a></li>
+                        <li class="px-6 py-2"><a>Peadiatritians</a></li>
+                        <li class="px-6 py-2"><a>Orthopediatritian</a></li>
+                        <li class="px-6 py-2"><a>Neurologist</a></li>
+                        <li class="px-6 py-2"><a>Physiatrist</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- doctors profile -->
+                <div></div>
+            </div>
+        </div>
+        <!-- doctor section end -->
     </main>
 
     <footer></footer>
