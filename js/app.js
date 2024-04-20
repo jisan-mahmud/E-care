@@ -5,6 +5,28 @@ menuToggle.addEventListener('click', function() {
   navbarCta.classList.toggle('hidden'); // Toggle visibility of the navigation menu
 });
 
+// Select all elements with the class 'sider_arrow'
+const siderArrows = document.querySelectorAll('#sider_arrow');
+
+// Add event listener to each sider arrow element
+siderArrows.forEach(siderarrow => {
+  siderarrow.addEventListener('click', function() {
+    const targetId = this.getAttribute('data-target');
+    const sideritems = document.getElementById(targetId);
+
+    if (sideritems) {
+      sideritems.classList.toggle('hidden'); // Toggle visibility of the corresponding navigation menu
+      if (!sideritems.classList.contains('hidden')) {
+        sideritems.classList.add('block'); // Ensure the navigation menu is displayed as block when not hidden
+      } else {
+        sideritems.classList.remove('block'); // Remove 'block' class when hidden
+      }
+    }
+  });
+});
+
+
+
 const services_load = () => {
     fetch("https://testing-8az5.onrender.com/services/")
       .then((res) => res.json())
