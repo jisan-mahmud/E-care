@@ -25,18 +25,15 @@ siderArrows.forEach(siderarrow => {
   });
 });
 
-
-
 const services_load = () => {
-    fetch("https://testing-8az5.onrender.com/services/")
-      .then((res) => res.json())
-      .then((data) => {
-        display_service(data);
-      })
-      .catch((err) => console.log(err));
-  };
+  fetch("https://testing-8az5.onrender.com/services/")
+    .then((res) => res.json())
+    .then((data) => {
+      display_service(data);
+    })
+    .catch((err) => console.log(err));
+};
 
-// display services
 const display_service = (services) => {
   const glideContainer = document.querySelector(".swiper-wrapper");
 
@@ -92,4 +89,94 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
+
+// fetch all doctor from sever
+const doctor_load = (value) => {
+  document.getElementById('doctors').innerHTML = ''
+  if (value){
+    fetch("https://testing-8az5.onrender.com/doctor/list/?search="+value)
+      .then((res) => res.json())
+      .then((data) => {
+        display_doctor(data); // Corrected function call here
+      })
+      .catch((err) => console.log(err));
+  }
+  else{
+    fetch("https://testing-8az5.onrender.com/doctor/list/")
+      .then((res) => res.json())
+      .then((data) => {
+        display_doctor(data); // Corrected function call here
+      })
+      .catch((err) => console.log(err));
+  }
+};
+
+const display_doctor = (doctors) =>{
+  doctors.results.forEach((doctor) => {
+    const doctors_section = document.getElementById('doctors');
+    let div = document.createElement('div');
+    div.classList = 'bg-gray-50 shadow-md overflow-hidden rounded cursor-pointer hover:-translate-y-2 transition-all relative'
+    div.innerHTML = `
+                    <div class="h-[220px] overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+                    <img src="${doctor.image}" alt="Product 1" class="!h-full !w-full" />
+                    </div>
+                    <div class="p-6 bg-white">
+                    <h3 class="text-lg font-bold text-gray-800">${doctor.full_name}</h3>
+                    <h4 class="text-lg text-gray-700 font-bold mt-2">${doctor.designation}</h4>
+                    <p class="text-gray-500 text-sm mt-2">Fee ${doctor.fee}</p>
+                    </div>
+                    `
+    doctors_section.appendChild(div)
+  });
+
+}
+
+// fetch all doctor from sever
+const doctor_designation = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/designation/")
+    .then((res) => res.json())
+    .then((data) => {
+      display_designation(data);
+    })
+    .catch((err) => console.log(err));
+};
+
+const display_designation = (designations) => {
+  designations.forEach((designation) => {
+    const parent = document.getElementById('sider_items2')
+    const li = document.createElement('li')
+    li.classList = 'px-6 py-2'
+    li.innerHTML = `
+    <a class="cursor-pointer hover:text-blue-700" onclick= "doctor_load('${designation.name}')">${designation.name}</a>
+    `
+    parent.appendChild(li)
+  })
+}
+
+
+const doctor_specialization = () => {
+    fetch("https://testing-8az5.onrender.com/doctor/specialization/")
+    .then((res) => res.json())
+    .then((data) => {
+      display_specialization(data);
+    })
+    .catch((err) => console.log(err));
+};
+
+const display_specialization = (specializations) => {
+  specializations.forEach((specialization) => {
+    const parent = document.getElementById('sider_items1')
+    const li = document.createElement('li')
+    li.classList = 'px-6 py-2'
+    li.innerHTML = `
+    <a class="cursor-pointer hover:text-blue-700" onclick= "doctor_load('${specialization.name}')">${specialization.name}</a>
+    `
+    parent.appendChild(li)
+  })
+}
+
+
 services_load();
+doctor_specialization();
+doctor_designation();
+doctor_load();
