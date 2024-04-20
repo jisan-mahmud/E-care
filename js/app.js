@@ -175,6 +175,14 @@ const display_specialization = (specializations) => {
   })
 }
 
+// doctor find by searcing
+const search_form = document.getElementById("doctor-search")
+search_form.addEventListener('submit', (event) =>{
+  event.preventDefault()
+  let data = new FormData(event.target)
+  doctor_load(data.get('search_box'))
+})
+
 
 services_load();
 doctor_specialization();
