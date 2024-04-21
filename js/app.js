@@ -92,11 +92,20 @@ var swiper = new Swiper(".mySwiper", {
 
 // fetch all doctor from sever
 const doctor_load = (value) => {
-  document.getElementById('doctors').innerHTML = ''
+  document.getElementById('doctors').innerHTML = `
+    <div class="loader">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+   `
+
   if (value){
     fetch("https://testing-8az5.onrender.com/doctor/list/?search="+value)
       .then((res) => res.json())
       .then((data) => {
+        document.getElementById('doctors').innerHTML = ''
         display_doctor(data); // Corrected function call here
       })
       .catch((err) => console.log(err));
@@ -105,6 +114,7 @@ const doctor_load = (value) => {
     fetch("https://testing-8az5.onrender.com/doctor/list/")
       .then((res) => res.json())
       .then((data) => {
+        document.getElementById('doctors').innerHTML = ''
         display_doctor(data); // Corrected function call here
       })
       .catch((err) => console.log(err));
@@ -112,6 +122,18 @@ const doctor_load = (value) => {
 };
 
 const display_doctor = (doctors) =>{
+  if (doctors.results.length <= 0){
+    document.getElementById('doctors').innerHTML = `
+    <div class="container flex flex-col items-center m-auto w-5h">
+        <div class="flex flex-col gap-6 max-w-md text-center">
+            <h2 class="font-extrabold text-9xl text-black">
+                <span class="sr-only">Error</span>404
+            </h2>
+            <p class="text-2xl md:text-3xl text-black">Sorry, we couldn't find this doctor.</p>
+        </div>
+    </div>
+    `
+  }
   doctors.results.forEach((doctor) => {
     const doctors_section = document.getElementById('doctors');
     let div = document.createElement('div');
