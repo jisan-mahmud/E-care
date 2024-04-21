@@ -92,7 +92,10 @@ var swiper = new Swiper(".mySwiper", {
 
 // fetch all doctor from sever
 const doctor_load = (value, url) => {
-  console.log(url)
+  const pre = document.getElementById('pgn-pre')
+  pre.classList.add('hidden')
+  const next = document.getElementById('pgn-next')
+  next.classList.add('hidden')
   document.getElementById('doctors').innerHTML = `
     <div class="loader">
       <div class="circle"></div>
@@ -135,7 +138,7 @@ const doctor_load = (value, url) => {
 const display_doctor = (doctors) =>{
   if (doctors.results.length <= 0){
     document.getElementById('doctors').innerHTML = `
-    <div class="container flex flex-col items-center m-auto w-5h">
+    <div class="container flex flex-col items-center m-auto w-5">
         <div class="flex flex-col gap-6 max-w-md text-center">
             <h2 class="font-extrabold text-9xl text-black">
                 <span class="sr-only">Error</span>404
@@ -144,10 +147,11 @@ const display_doctor = (doctors) =>{
         </div>
     </div>
     `
+    const pre = document.getElementById('pgn-pre')
+    pre.classList.add('hidden')
+    const next = document.getElementById('pgn-next')
+    next.classList.add('hidden')
   }
-  // call pagination function
-  pagination(doctors)
-
   // doctor append in html
   doctors.results.forEach((doctor) => {
     const doctors_section = document.getElementById('doctors');
@@ -165,6 +169,8 @@ const display_doctor = (doctors) =>{
                     `
     doctors_section.appendChild(div)
   });
+  // call pagination function
+  pagination(doctors)
 }
 
 const pagination = (doctors) => {
@@ -185,7 +191,7 @@ const pagination = (doctors) => {
     }
 }
 
-// fetch all doctor from sever
+// fetch all doctor designation from sever
 const doctor_designation = () => {
   fetch("https://testing-8az5.onrender.com/doctor/designation/")
     .then((res) => res.json())
@@ -230,15 +236,18 @@ const display_specialization = (specializations) => {
 }
 
 // doctor find by searcing
-const search_form = document.getElementById("doctor-search")
-search_form.addEventListener('submit', (event) =>{
-  event.preventDefault()
-  let data = new FormData(event.target)
-  doctor_load(data.get('search_box'))
-})
+const search_doctor = () => {
+  const search_form = document.getElementById("doctor-search")
+  search_form.addEventListener('submit', (event) =>{
+    event.preventDefault()
+    let data = new FormData(event.target)
+    doctor_load(data.get('search_box'))
+  })
+}
 
 
 services_load();
 doctor_specialization();
 doctor_designation();
 doctor_load();
+search_doctor()
