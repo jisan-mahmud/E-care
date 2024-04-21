@@ -94,3 +94,16 @@ margin-bottom: 0;
     transform: scale(1) rotate(360deg);
   }
 }
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.card-animation {
+  animation: slide 10s infinite alternate;
+}
