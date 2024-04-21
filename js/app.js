@@ -91,7 +91,8 @@ var swiper = new Swiper(".mySwiper", {
 
 
 // fetch all doctor from sever
-const doctor_load = (value) => {
+const doctor_load = (value, url) => {
+  console.log(url)
   document.getElementById('doctors').innerHTML = `
     <div class="loader">
       <div class="circle"></div>
@@ -100,8 +101,16 @@ const doctor_load = (value) => {
       <div class="circle"></div>
     </div>
    `
-
-  if (value){
+   if (url){
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById('doctors').innerHTML = ''
+        console.log(data)
+        display_doctor(data); // Corrected function call here
+      })
+      .catch((err) => console.log(err));
+  }else if (value){
     fetch("https://testing-8az5.onrender.com/doctor/list/?search="+value)
       .then((res) => res.json())
       .then((data) => {
@@ -119,6 +128,8 @@ const doctor_load = (value) => {
       })
       .catch((err) => console.log(err));
   }
+
+
 };
 
 const display_doctor = (doctors) =>{
@@ -134,6 +145,10 @@ const display_doctor = (doctors) =>{
     </div>
     `
   }
+  // call pagination function
+  pagination(doctors)
+
+  // doctor append in html
   doctors.results.forEach((doctor) => {
     const doctors_section = document.getElementById('doctors');
     let div = document.createElement('div');
@@ -150,7 +165,24 @@ const display_doctor = (doctors) =>{
                     `
     doctors_section.appendChild(div)
   });
+}
 
+const pagination = (doctors) => {
+    // pagination functionaly
+    if (doctors.next != null){
+      const next = document.getElementById('pgn-next')
+      next.href = doctors.next
+      next.classList.remove('hidden')
+      next.addEventListener('click', (e)=>{
+        e.preventDefault()
+        // doctor_load(value=null, url= next.href)
+      })
+    }
+    if (doctors.previous != null) {
+      const pre = document.getElementById('pgn-pre')
+      pre.classList.remove('hidden')
+      pre.href = doctors.previous;
+    }
 }
 
 // fetch all doctor from sever
