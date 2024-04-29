@@ -246,8 +246,34 @@ const search_doctor = () => {
 }
 
 
+const load_review = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/review/")
+    .then((res) => res.json())
+    .then((data) => {
+      display_review(data);
+    })
+    .catch((err) => console.log(err));
+}
+
+const display_review = (reviews) => {
+  reviews.forEach((review) => {
+    const parent = document.getElementById('review_section')
+    const div = document.createElement('div')
+    div.classList = 'bg-gray-200 w-fit rounded-lg p-8 flex-none text-center md:w-1/3 card-animation'
+    div.innerHTML = `
+    <p class="font-bold uppercase">${review.reviewer}</p>
+                <p class="text-xl font-light italic text-gray-700">${review.body.slice(0, 90)}...</p>
+                <div class="flex items-center justify-center space-x-2 mt-4">
+                ${review.rating}
+                </div>
+    `
+    parent.appendChild(div)
+  })
+}
+
 services_load();
 doctor_specialization();
 doctor_designation();
 doctor_load();
 search_doctor()
+load_review()
