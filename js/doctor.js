@@ -18,6 +18,7 @@ let load_doctor_info = () => {
     .then((res) => res.json())
     .then((data) => {
         display_doctor_info(data);
+        load_time(id);
     })
     .catch((err) => console.log(err));
 }
@@ -53,13 +54,28 @@ let display_doctor_info = (doctor_info) => {
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores architecto fuga maxime! Error, aliquid nihil corporis iusto est itaque? Minus, molestias maiores eum accusamus assumenda voluptates ipsa esse laborum. Minus.
                         </p>
                         <span class="font-medium">Free: ${doctor_info.fee} BDT</span>
-                        <button type="button" class="text-white bg-blue-700 hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 my-6">
-                        Take a appoinment
+
+                        <button class="text-white bg-blue-700 hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 my-6" onclick="my_modal_3.showModal()">Take Appointment
                         </button>
                     </div>
                 </div>
     `
     parent.append(div)
+}
+
+const load_time = (id) => {
+    fetch("https://testing-8az5.onrender.com/doctor/availabletime/?doctor_id=" + id)
+    .then((res) => res.json())
+    .then((data) => {
+        data.forEach( (time) => {
+            let parent = document.getElementById('time')
+            let option = document.createElement('option')
+            option.value = time.name
+            option.innerHTML = time.name
+            parent.appendChild(option)
+        })
+    })
+    .catch((err) => console.log(err));
 }
 
 const load_review = () => {
@@ -69,9 +85,9 @@ const load_review = () => {
         display_review(data);
       })
       .catch((err) => console.log(err));
-  }
+}
 
-  const display_review = (reviews) => {
+const display_review = (reviews) => {
     reviews.forEach((review) => {
       const parent = document.getElementById('review_section')
       const div = document.createElement('div')
@@ -85,9 +101,30 @@ const load_review = () => {
       `
       parent.appendChild(div)
     })
-  }
+}
 
+const take_appointment = () => {
+    const form = document.getElementById('take-appointment')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData);
+
+        const info = {
+            appointment_type: formProps.appointment_type,
+            appointment_status: "pending",
+            time: formProps.time,
+            syntom: formProps.syntoms,
+            cancel: false,
+            patiant: 1,
+            doctor: 1
+        }
+        console.log(info, formProps)
+
+    })
+}
 
 mobile_menu()
 load_doctor_info()
 load_review()
+take_appointment()
