@@ -1,9 +1,11 @@
-// menu toggle
-const menuToggle = document.getElementById('menu_toggle');
-const navbarCta = document.getElementById('navbar-cta');
-menuToggle.addEventListener('click', function() {
-  navbarCta.classList.toggle('hidden'); // Toggle visibility of the navigation menu
-});
+let mobile_menu = () => {
+  // menu toggle
+  const menuToggle = document.getElementById('menu_toggle');
+  const navbarCta = document.getElementById('navbar-cta');
+  menuToggle.addEventListener('click', function() {
+    navbarCta.classList.toggle('hidden'); // Toggle visibility of the navigation menu
+  });
+}
 
 // Select all elements with the class 'sider_arrow'
 const siderArrows = document.querySelectorAll('#sider_arrow');
@@ -162,7 +164,7 @@ const display_doctor = (doctors) =>{
                     <img src="${doctor.image}" alt="Product 1" class="!h-full !w-full" />
                     </div>
                     <div class="p-6 bg-white">
-                    <h3 class="text-lg font-bold text-gray-800">${doctor.full_name}</h3>
+                    <h3 class="text-lg font-bold text-gray-800"><a class="hover:text-blue-600" href="./doctor.html?doctor-id=${doctor.id}">${doctor.full_name}</a></h3>
                     <h4 class="text-lg text-gray-700 font-bold mt-2">${doctor.designation}</h4>
                     <p class="text-gray-500 text-sm mt-2">Fee ${doctor.fee}</p>
                     </div>
@@ -271,6 +273,7 @@ const display_review = (reviews) => {
   })
 }
 
+mobile_menu()
 services_load();
 doctor_specialization();
 doctor_designation();
