@@ -107,3 +107,10 @@ margin-bottom: 0;
 .card-animation {
   animation: slide 10s infinite alternate;
 }
+
+.specialization li{
+  border: none;
+}
+.specialization li:not(:last-child):after {
+  content: ", ";
+}
