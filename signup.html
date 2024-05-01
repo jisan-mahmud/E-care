@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Care: Safe Life</title>
+    <title>Registration page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -24,19 +24,19 @@
           <div
             class="flex sm:block md:order-2 space-x-3 gap-2 md:space-x-0 rtl:space-x-reverse"
           >
-          <div class="flex gap-4">
-            <a href="./signup.html">
-                <button type="button"
-                class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                Sign Up
-              </button>
-            </a>
-            <a href="./signin.html">
-                <button type="button" class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                    Login
-                </button>
-            </a>
-        </div>
+            <div class="flex gap-4">
+                <a href="./signup.html">
+                    <button type="button"
+                    class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                    Sign Up
+                  </button>
+                </a>
+                <a href="./signin.html">
+                    <button type="button" class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                        Login
+                    </button>
+                </a>
+            </div>
             <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-cta" aria-expanded="false" id="menu_toggle">
               <span class="sr-only">Open main menu</span>
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -89,65 +89,53 @@
 
     <!-- body content -->
     <main class="mx-4 mb-8">
-        <!-- doctor details section -->
-        <div id="doctor_details" class="flex m-auto w-9/12 bg-[#fafafa] !p-10 rounded-lg">
-
-        </div>
-
-        <section class="bg-white px-4 py-12 md:py-24">
-            <div class="max-w-screen-xl mx-auto">
-              <h2 class="font-black text-black text-center text-3xl leading-none uppercase max-w-2xl mx-auto mb-12">What Patients
-                Are Saying</h2>
-              <div id="review_section" style="scrollbar-width: none;" class="flex space-y-4 md:space-y-0 md:flex-row space-x-4 relative overflow-x-auto">
-
-              </div>
-              </div>
+        <section>
+            <div class="flex flex-col items-center justify-center px-6 py-2 mx-auto md:h-screen lg:py-0">
+                <div class="w-full bg-gradient-to-r from-teal-500 to-teal-200 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                            Create and account
+                        </h1>
+                        <form class="space-y-4 md:space-y-6" action="#">
+                            <div id="group" class="flex justify-between gap-2">
+                                <div>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">First Name</label>
+                                    <input type="text" name="First_Name" id="email" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" placeholder="Jonh" required="">
+                                </div>
+                                <div>
+                                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
+                                    <input type="password" name="Last_Name" id="password" placeholder="Smith" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                                <input type="email" name="email" id="email" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" placeholder="name@company.com" required="">
+                            </div>
+                            <div>
+                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                                <input type="password" name="password" id="password" placeholder="••••••••" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" required>
+                            </div>
+                            <div>
+                                <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900">Confirm password</label>
+                                <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" required>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                  <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required>
+                                </div>
+                                <div class="ml-3 text-sm">
+                                  <label for="terms" class="font-light text-gray-900">I accept the <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full text-white bg-gray-950 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
+                            <p class="text-sm font-light text-gray-950">
+                                Already have an account? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
-
-
-
-        <!-- You can open the modal using ID.showModal() method -->
-
-        <dialog id="my_modal_3" class="modal w-6/12 p-6 rounded-lg">
-        <div class="modal-box flex justify-between">
-            <h1 class="text-3xl font-sans">
-                Form Fillup with correct information
-            </h1>
-            <form method="dialog">
-            <button class="btn font-bold btn-sm btn-circle btn-ghost">✕</button>
-            </form>
-        </div>
-        <div class="mt-2">
-            <form id="take-appointment" action="" method="post">
-                <div class="">
-                    <h5>Select Appointment Type *</h5>
-                    <input type="radio" name="appointment_type" value="Online" required> Online
-                    <input type="radio" name="appointment_type" value="Offline" required> Offline
-                </div>
-                <div class="my-1">
-                    <h5>What's your syntoms?</h5>
-                    <textarea name="syntoms" cols="90" rows="5" class="border-slate-400 border focus:outline-slate-500 my-1 rounded-lg" required></textarea>
-                </div>
-                <div class="">
-                    <h5>Select Time: </h5>
-                    <select name="time" id="time" class="w-[96%] border-slate-400 border focus:outline-slate-500 my-1 py-2 px-1 rounded-lg" required>
-
-                    </select>
-                </div>
-
-                <div id="alert" class="items-center p-4 my-2 text-green-800 rounded-lg bg-yellow-50 hidden" role="alert">
-
-                </div>
-
-                <button class="text-white bg-blue-700 hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 my-6" type="submit">Submit
-                </button>
-
-            </form>
-        </div>
-        </dialog>
-
-
     </main>
 
 
