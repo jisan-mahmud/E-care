@@ -147,12 +147,12 @@
             <form id="take-appointment" action="" method="post">
                 <div class="">
                     <h5>Select Appointment Type *</h5>
-                    <input type="radio" name="appointment_type" value="online" required> Online
-                    <input type="radio" name="appointment_type" value="offline required"> Offline
+                    <input type="radio" name="appointment_type" value="Online" required> Online
+                    <input type="radio" name="appointment_type" value="Offline" required> Offline
                 </div>
                 <div class="my-1">
                     <h5>What's your syntoms?</h5>
-                    <textarea name="syntoms" id="" cols="90" rows="5" class="border-slate-400 border focus:outline-slate-500 my-1 rounded-lg" required></textarea>
+                    <textarea name="syntoms" cols="90" rows="5" class="border-slate-400 border focus:outline-slate-500 my-1 rounded-lg" required></textarea>
                 </div>
                 <div class="">
                     <h5>Select Time: </h5>
@@ -160,8 +160,14 @@
 
                     </select>
                 </div>
+
+                <div id="alert" class="items-center p-4 my-2 text-green-800 rounded-lg bg-yellow-50 hidden" role="alert">
+
+                </div>
+
                 <button class="text-white bg-blue-700 hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 my-6" type="submit">Submit
                 </button>
+
             </form>
         </div>
         </dialog>
