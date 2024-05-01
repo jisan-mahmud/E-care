@@ -70,7 +70,7 @@ const load_time = (id) => {
         data.forEach( (time) => {
             let parent = document.getElementById('time')
             let option = document.createElement('option')
-            option.value = time.name
+            option.value = time.id
             option.innerHTML = time.name
             parent.appendChild(option)
         })
@@ -112,15 +112,44 @@ const take_appointment = () => {
 
         const info = {
             appointment_type: formProps.appointment_type,
-            appointment_status: "pending",
+            appointment_status: "Pending",
             time: formProps.time,
-            syntom: formProps.syntoms,
+            symptom: formProps.syntoms,
             cancel: false,
-            patiant: 1,
+            patient: 1,
             doctor: 1
         }
-        console.log(info, formProps)
+        console.log(info)
+        form.reset()
 
+        fetch("https://testing-8az5.onrender.com/appointment/", {
+            method: "POST",
+            body: JSON.stringify(info),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            let status = document.getElementById('alert');
+            status.classList.remove('hidden')
+            status.classList.add('flex')
+            status.innerHTML = `
+            <div class="ms-3 text-sm font-medium">
+                Sent Appointment Request Successfully!
+            </div>
+            `
+        })
+        .catch( e => {
+            let status = document.getElementById('alert');
+            status.classList.remove('hidden', 'text-green-800')
+            status.classList.add('flex', 'text-red-800')
+            status.innerHTML = `
+            <div class="ms-3 text-sm font-medium">
+                Sent Appointment Request Successfully!
+            </div>
+            `
+        });
     })
 }
 
