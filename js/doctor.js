@@ -119,8 +119,6 @@ const take_appointment = () => {
             patient: 1,
             doctor: 1
         }
-        console.log(info)
-        form.reset()
 
         fetch("https://testing-8az5.onrender.com/appointment/", {
             method: "POST",
@@ -136,7 +134,7 @@ const take_appointment = () => {
             status.classList.add('flex')
             status.innerHTML = `
             <div class="ms-3 text-sm font-medium">
-                Sent Appointment Request Successfully!
+                Appointment Request Successfull!
             </div>
             `
         })
@@ -146,10 +144,11 @@ const take_appointment = () => {
             status.classList.add('flex', 'text-red-800')
             status.innerHTML = `
             <div class="ms-3 text-sm font-medium">
-                Sent Appointment Request Successfully!
+                Appointment Request unsuccessfull!
             </div>
             `
         });
+        form.reset()
     })
 }
 
