@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -17,68 +18,58 @@
 
     <header class="mx-4">
       <nav class="bg-white border-gray-200">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-8">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="./index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="images/logo.png" class="h-8" alt="Flowbite Logo" />
+              <img src="./images/logo.png" class="h-8" alt="Flowbite Logo" />
           </a>
-          <div
-            class="flex sm:block md:order-2 space-x-3 gap-2 md:space-x-0 rtl:space-x-reverse"
-          >
-          <div class="flex gap-4">
-            <a href="./signup.html">
-                <button type="button"
-                class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                Sign Up
-              </button>
-            </a>
-            <a href="./signin.html">
-                <button type="button" class="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                    Login
-                </button>
-            </a>
-        </div>
-            <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-cta" aria-expanded="false" id="menu_toggle">
+          <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-multi-level" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
               </svg>
-            </button>
-          </div>
-          <div
-            class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-            id="navbar-cta"
-          >
-            <ul
-              class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
-            >
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
               <li>
-                <a
-                  href="./index.html"
-                  class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                  aria-current="page"
-                  >Home</a
-                >
+                <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
-                  >About</a
-                >
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Services</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
-                  >Services</a
-                >
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Pricing</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
-                  >Contact</a
-                >
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contact</a>
+              </li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Dropdown
+                  <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <ul id="account_access" class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                      <li>
+                        <a href="./signup.html" class="block px-4 py-2 hover:bg-gray-100">Sign Up</a>
+                      </li>
+                      <li>
+                        <a href="./signin.html" class="block px-4 py-2 hover:bg-gray-100">Sign In</a>
+                      </li>
+                    </ul>
+                    <ul id="profile" class="py-2 text-sm text-gray-700 profile hidden" aria-labelledby="dropdownLargeButton">
+                      <li>
+                        <a href="./signup.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                      </li>
+                      <li>
+                        <a href="./signin.html" class="block px-4 py-2 hover:bg-gray-100">All Appointment</a>
+                      </li>
+                      <li>
+                        <a href="./signin.html" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                      </li>
+                    </ul>
+                </div>
               </li>
             </ul>
           </div>
@@ -96,15 +87,21 @@
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Login in your account
                         </h1>
-                        <form class="space-y-4 md:space-y-6" action="#">
+                        <span id="login_status" class="hidden mt- font-medium justify-center text-red-700">Now login your account.</span>
+                        <form onsubmit="handle_login(event)" class="space-y-4 md:space-y-6" method="post">
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-                                <input type="email" name="email" id="email" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" placeholder="name@company.com" required="">
+                                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your Username</label>
+                                <input type="username" name="username" id="username" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" placeholder="username11" required="">
                             </div>
                             <div>
                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••" class="bg-white text-gray-900 sm:text-sm rounded-lg focus:outline-none block w-full p-2.5" required>
                             </div>
+
+                            <ul id="login_alert" class="items-center my-2 text-green-800 rounded-lg list-disc hidden" role="alert">
+
+                            </ul>
+
                             <button type="submit" class="w-full text-white bg-gray-950 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
                             <p class="text-sm font-light text-gray-950">
                                 You have no account? <a href="./signup.html" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Signup here</a>
@@ -186,6 +183,12 @@
         </div>
     </footer>
     <script src="https://kit.fontawesome.com/87115898c2.js" crossorigin="anonymous"></script>
-    <script src="/js/doctor.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/authorize_check.js"></script>
+    <script>
+      if(localStorage.getItem('user_id') && localStorage.getItem('token')){
+        window.location.replace("./index.html");
+      }
+    </script>
   </body>
 </html>

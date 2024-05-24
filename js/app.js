@@ -1,12 +1,3 @@
-let mobile_menu = () => {
-  // menu toggle
-  const menuToggle = document.getElementById('menu_toggle');
-  const navbarCta = document.getElementById('navbar-cta');
-  menuToggle.addEventListener('click', function() {
-    navbarCta.classList.toggle('hidden'); // Toggle visibility of the navigation menu
-  });
-}
-
 // Select all elements with the class 'sider_arrow'
 const siderArrows = document.querySelectorAll('#sider_arrow');
 
@@ -28,7 +19,7 @@ siderArrows.forEach(siderarrow => {
 });
 
 const services_load = () => {
-  fetch("https://testing-8az5.onrender.com/services/")
+  fetch("http://127.0.0.1:8000/service/")
     .then((res) => res.json())
     .then((data) => {
       display_service(data);
@@ -116,7 +107,7 @@ const doctor_load = (value, url) => {
       })
       .catch((err) => console.log(err));
   }else if (value){
-    fetch("https://testing-8az5.onrender.com/doctor/list/?search="+value)
+    fetch("http://127.0.0.1:8000/doctor/list/?search="+value)
       .then((res) => res.json())
       .then((data) => {
         document.getElementById('doctors').innerHTML = ''
@@ -125,7 +116,7 @@ const doctor_load = (value, url) => {
       .catch((err) => console.log(err));
   }
   else{
-    fetch("https://testing-8az5.onrender.com/doctor/list/")
+    fetch("http://127.0.0.1:8000/doctor/list/")
       .then((res) => res.json())
       .then((data) => {
         document.getElementById('doctors').innerHTML = ''
@@ -176,26 +167,57 @@ const display_doctor = (doctors) =>{
 }
 
 const pagination = (doctors) => {
+    const pre = document.getElementById('pgn-pre')
+    const next = document.getElementById('pgn-next')
+
+    if(doctors.next == null)
+      next.classList.add('hidden')
+
+    if(doctors.previous == null)
+      pre.classList.add('hidden')
+
     // pagination functionaly
     if (doctors.next != null){
-      const next = document.getElementById('pgn-next')
       next.href = doctors.next
       next.classList.remove('hidden')
       next.addEventListener('click', (e)=>{
         e.preventDefault()
-        // doctor_load(value=null, url= next.href)
-      })
+        var url = e.target.href
+        fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById('doctors').innerHTML = ''
+          console.log(data)
+          display_doctor(data); // Corrected function call here
+        })
+        .catch((err) => console.log(err));
+
+        })
     }
+
+
     if (doctors.previous != null) {
-      const pre = document.getElementById('pgn-pre')
       pre.classList.remove('hidden')
       pre.href = doctors.previous;
+      pre.addEventListener('click', (e)=>{
+        e.preventDefault()
+        var url = e.target.href
+        fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById('doctors').innerHTML = ''
+          console.log(data)
+          display_doctor(data); // Corrected function call here
+        })
+        .catch((err) => console.log(err));
+
+        })
     }
 }
 
 // fetch all doctor designation from sever
 const doctor_designation = () => {
-  fetch("https://testing-8az5.onrender.com/doctor/designation/")
+  fetch("http://127.0.0.1:8000/doctor/designation/")
     .then((res) => res.json())
     .then((data) => {
       display_designation(data);
@@ -217,7 +239,7 @@ const display_designation = (designations) => {
 
 
 const doctor_specialization = () => {
-    fetch("https://testing-8az5.onrender.com/doctor/specialization/")
+    fetch("http://127.0.0.1:8000/doctor/designation/")
     .then((res) => res.json())
     .then((data) => {
       display_specialization(data);
@@ -273,7 +295,6 @@ const display_review = (reviews) => {
   })
 }
 
-mobile_menu()
 services_load();
 doctor_specialization();
 doctor_designation();

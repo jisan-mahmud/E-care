@@ -1,12 +1,3 @@
-let mobile_menu = () => {
-    // menu toggle
-    const menuToggle = document.getElementById('menu_toggle');
-    const navbarCta = document.getElementById('navbar-cta');
-    menuToggle.addEventListener('click', function() {
-      navbarCta.classList.toggle('hidden'); // Toggle visibility of the navigation menu
-    });
-  }
-
 let get_params = () =>{
     let params = new URLSearchParams(window.location.search).get('doctor-id');
     return params
@@ -152,7 +143,6 @@ const take_appointment = () => {
     })
 }
 
-mobile_menu()
 load_doctor_info()
 load_review()
 take_appointment()
