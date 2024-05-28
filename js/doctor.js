@@ -1,11 +1,11 @@
-let get_params = () =>{
+let doctor_id = () =>{
     let params = new URLSearchParams(window.location.search).get('doctor-id');
     return params
 }
 
 let load_doctor_info = () => {
-    id = get_params()
-    fetch("https://testing-8az5.onrender.com/doctor/list/" + id)
+    id = doctor_id()
+    fetch("http://127.0.0.1:8000/doctor/list/" + id)
     .then((res) => res.json())
     .then((data) => {
         display_doctor_info(data);
@@ -26,12 +26,7 @@ let display_doctor_info = (doctor_info) => {
                     <div class="flex flex-col gap-2 mt-6">
                         <h1 class="font-bold text-3xl text-teal-500">${doctor_info.full_name}</h1>
                         <div class="flex gap-4 font-medium">
-                            <span>Designation: </span>
-                            <ul class="flex gap-3 specialization">
-                                ${doctor_info.designation.map((element) => `
-                                <li>${element}</li>
-                                `).join('')}
-                            </ul>
+                            <span>Designation: ${doctor_info.designation}</span>
                         </div>
                         <div class="flex gap-4 font-medium">
                             <span>Specialization: </span>
@@ -55,9 +50,10 @@ let display_doctor_info = (doctor_info) => {
 }
 
 const load_time = (id) => {
-    fetch("https://testing-8az5.onrender.com/doctor/availabletime/?doctor_id=" + id)
+    fetch("http://127.0.0.1:8000/doctor/availabletime/?doctor_id=" + id)
     .then((res) => res.json())
     .then((data) => {
+        console.log(data)
         data.forEach( (time) => {
             let parent = document.getElementById('time')
             let option = document.createElement('option')
@@ -70,7 +66,7 @@ const load_time = (id) => {
 }
 
 const load_review = () => {
-    fetch("https://testing-8az5.onrender.com/doctor/review/")
+    fetch("http://127.0.0.1:8000/doctor/review/?doctor_id=" + doctor_id())
       .then((res) => res.json())
       .then((data) => {
         display_review(data);
