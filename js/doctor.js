@@ -53,7 +53,6 @@ const load_time = (id) => {
     fetch("http://127.0.0.1:8000/doctor/availabletime/?doctor_id=" + id)
     .then((res) => res.json())
     .then((data) => {
-        console.log(data)
         data.forEach( (time) => {
             let parent = document.getElementById('time')
             let option = document.createElement('option')
@@ -99,43 +98,57 @@ const take_appointment = () => {
 
         const info = {
             appointment_type: formProps.appointment_type,
-            appointment_status: "Pending",
-            time: formProps.time,
-            symptom: formProps.syntoms,
-            cancel: false,
-            patient: 1,
-            doctor: 1
+            time: Number(formProps.time),
+            symtom: formProps.syntoms,
+            doctor: Number(doctor_id())
         }
 
-        fetch("https://testing-8az5.onrender.com/appointment/", {
+
+
+        token = localStorage.getItem('token')
+        fetch("http://127.0.0.1:8000/appointment/", {
             method: "POST",
             body: JSON.stringify(info),
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                'Authorization': `Token ${token}`
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            document.getElementById('alert').innerHTML= ''
+            if(response.ok){
+                let status = document.getElementById('alert');
+                status.classList.remove('hidden', 'text-red-900')
+                status.classList.add('flex')
+                status.innerHTML = `
+                <div class="ms-3 text-sm font-medium">
+                    Appointment Request Successfull!
+                </div>
+                `
+            }else if(response.status = 406){
+                return response.json()
+            }
+            form.reset()
+        })
         .then(json => {
-            let status = document.getElementById('alert');
-            status.classList.remove('hidden')
-            status.classList.add('flex')
-            status.innerHTML = `
-            <div class="ms-3 text-sm font-medium">
-                Appointment Request Successfull!
-            </div>
-            `
+            if(json.errors){
+                let status = document.getElementById('alert');
+                status.classList.remove('hidden')
+                status.classList.add('flex', 'text-red-900')
+                for(const [key, value] of Object.entries(json.errors)){
+                    let div = document.createElement('div')
+                    div.classList.add('text-sm', 'font-medium')
+                    div.innerHTML = `
+                        <p>${value}</p>
+                    `
+                    div.classList.add('ms-3', 'text-sm', 'font-medium')
+                    status.appendChild(div)
+                }
+            }
         })
         .catch( e => {
-            let status = document.getElementById('alert');
-            status.classList.remove('hidden', 'text-green-800')
-            status.classList.add('flex', 'text-red-800')
-            status.innerHTML = `
-            <div class="ms-3 text-sm font-medium">
-                Appointment Request unsuccessfull!
-            </div>
-            `
+
         });
-        form.reset()
     })
 }
 
