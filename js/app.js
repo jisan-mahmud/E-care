@@ -129,6 +129,7 @@ const doctor_load = (value, url) => {
 };
 
 const display_doctor = (doctors) =>{
+  console.log(doctors)
   if (doctors.results.length <= 0){
     document.getElementById('doctors').innerHTML = `
     <div class="container flex flex-col items-center m-auto w-5">
