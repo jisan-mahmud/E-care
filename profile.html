@@ -80,15 +80,14 @@
         <main class="mx-4 my-2">
           <!-- User information -->
           <div id="user_details" class="flex justify-center m-auto w-9/12 bg-[#fafafa] !p-10 rounded-lg">
-              <div class="flex mr-20">
-                  <img class="rounded-full sm:w-40 sm:h-40" src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="">
+              <div id="patient_img" class="flex mr-20">
+                  
               </div>
               <div class="flex w-8/12">
                   <div class="flex flex-col gap-2">
-                      <h1 class="font-bold m-0 p-0 text-3xl text-teal-500">Jisan Mahmud</h1>
-                      <span class="font-medium">Email: jisan.mahmud203@gmaiil.com</span>
-                      <span class="font-medium">Phone: 01996629397</span>
-
+                     <div id="patient_info" class="flex flex-col">
+                        
+                     </div>
                       <button class="text-white bg-blue-700 hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 my-6" onclick="my_modal_3.showModal()">Edit Profile
                       </button>
                   </div>
@@ -117,24 +116,8 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Offline
-                        </th>
-                        <td class="px-6 py-4">
-                            Pending
-                        </td>
-                        <td class="px-6 py-4">
-                            Lorem ipsam publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
-                        </td>
-                        <td class="px-6 py-4">
-                            Jonson Emily
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600">Cancel</a>
-                        </td>
-                    </tr>
+                <tbody id="appointment_table">
+                    
                 </tbody>
             </table>
             <div id="pagination" class="flex py-3 justify-between px-12">
