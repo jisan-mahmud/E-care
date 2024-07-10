@@ -63,7 +63,7 @@
                         <a href="./profile.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
                       </li>
                       <li>
-                        <a href="./signin.html" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                        <a href="./index.html" onclick="handle_logout(event)" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
                       </li>
                     </ul>
                 </div>
@@ -186,6 +186,10 @@
       if(localStorage.getItem('user_id') && localStorage.getItem('token')){
         window.location.replace("./index.html");
       }
+    const handle_logout = (event) => {
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('token');
+    }
     </script>
   </body>
 </html>

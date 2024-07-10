@@ -1,8 +1,8 @@
 const token = "Token " + localStorage.getItem('token');
 
 let load_profile_info = () => {
-    
-    fetch("http://127.0.0.1:8000/patient/profile/", {
+    const url = "http://127.0.0.1:8000/";
+    fetch(url+"patient/profile/", {
         method: "GET",
         headers: {
             "Content-type": "application/json",
@@ -16,7 +16,7 @@ let load_profile_info = () => {
         return res.json();
     })
     .then((data) => {
-        display_profile_info(data);
+        display_profile_info(data, url);
     })
     .catch((err) => {
         console.error('Error fetching profile:', err);
@@ -24,8 +24,8 @@ let load_profile_info = () => {
 }
 
 let load_appointment = () => {
-
-    fetch('http://127.0.0.1:8000/appointment/',{
+    const URL = 'http://127.0.0.1:8000/appointment/';
+    fetch(URL,{
         method: 'GET',
         headers: {
             "Content-type": "application/json",
@@ -38,7 +38,7 @@ let load_appointment = () => {
         }
         return res.json()
     }).then((data) => {
-        display_appointment(data)
+        display_appointment(data, URL)
     })
     .catch((err) => {
         console.log(err)
@@ -46,7 +46,7 @@ let load_appointment = () => {
 }
 
 
-let display_profile_info = (info) => {
+let display_profile_info = (info, url) => {
     const patient_img = document.getElementById("patient_img");
     const patient_info = document.getElementById("patient_info");
 
@@ -55,7 +55,7 @@ let display_profile_info = (info) => {
     const email = document.getElementById('email')
     const number = document.getElementById('number')
 
-    patient_img.innerHTML = `<img class="rounded-full sm:w-40 sm:h-40" src="${info.image}" alt="">`;
+    patient_img.innerHTML = `<img class="rounded-full sm:w-40 sm:h-40" src="${url}${info.image}" alt="">`;
     patient_info.innerHTML = `
         <h1 class="font-bold m-0 mb-2 p-0 text-3xl text-teal-500">${info.first_name} ${info.last_name}</h1>
         <span class="font-medium">Email: ${info.email}</span>
@@ -72,7 +72,7 @@ let display_profile_info = (info) => {
     }
 }
 
-let display_appointment = (appointments) =>{
+let display_appointment = (appointments, URL) =>{
     appointments.forEach(appointment => {
 
         const appointment_table = document.getElementById('appointment_table');
@@ -92,7 +92,7 @@ let display_appointment = (appointments) =>{
                 ${appointment.doctor}
             </td>
             <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600">Cancel</a>
+                <a href="${URL}${appointment.id}" onclick="cancel_appointment(event);" class="font-medium text-blue-600">Cancel</a>
             </td>
         `
         appointment_table.appendChild(tr)
@@ -141,6 +141,23 @@ let edit_profile = () =>{
 
 }
 
+function cancel_appointment(event){
+    event.preventDefault()
+    const url = event.target.href;
+    fetch(url,{
+        method: 'DELETE',
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": token
+        }
+    })
+    .then((res) => {
+        if(res.status == 204){
+            alert('Appointment Successfully Cancel.')
+            location.reload()
+        }
+    })
+}
 
 load_profile_info()
 load_appointment()
