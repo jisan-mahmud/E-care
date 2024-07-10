@@ -139,27 +139,26 @@
                 </form>
             </div>
             <div class="mt-2 m-auto">
-                <form id="take-appointment" action="" method="post">
+                <form id="edit_profile" action="" method="post">
                     <div class="my-1">
                         <h5>Name: </h5>                                        
-                        <input name="name" type="text" class="border-slate-400 py-2 px-4 w-full border focus:outline-slate-500 my-1 rounded-lg" required>
+                        <input name="name" id="name" type="text" class="border-slate-400 py-2 px-4 w-full border focus:outline-slate-500 my-1 rounded-lg" required>
                     </div>
 
                     <div class="my-2">
                         <h5>Name: </h5>
-                        <input type="file"
-                            class="w-full bg-white border-slate-400 border file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 rounded-xl" />
+                        <input type="file" id="file" class="w-full bg-white border-slate-400 border file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 rounded-xl" />
                             <p class="text-xs text-gray-400 mt-2">PNG, JPG SVG, WEBP, and GIF are Allowed.</p>
                     </div>
 
                     <div class="my-2">
                         <h5>Email: </h5>
-                        <input name="email" type="email" class="w-full border-slate-400 border focus:outline-slate-500 my-1 py-2 px-1 rounded-lg" required>
+                        <input name="email" id="email" type="email" class="w-full border-slate-400 border focus:outline-slate-500 my-1 py-2 px-1 rounded-lg" required>
                     </div>
 
                     <div class="my-2">
                         <h5>Mobile Number: </h5>
-                        <input name="number" type="number" class="w-full border-slate-400 border focus:outline-slate-500 my-1 py-2 px-1 rounded-lg" required>
+                        <input name="number" id="number" type="number" class="w-full border-slate-400 border focus:outline-slate-500 my-1 py-2 px-1 rounded-lg" required>
                     </div>
 
                     <div id="alert" class="items-center p-4 my-2 text-green-800 rounded-lg bg-yellow-50 hidden" role="alert">
